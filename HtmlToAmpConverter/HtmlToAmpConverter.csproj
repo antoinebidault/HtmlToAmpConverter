@@ -2,6 +2,10 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <Product>Html To Amp formatter</Product>
+    <Authors>Bidass</Authors>
+    <Company>NGPA</Company>
+    <Description>A lightweight HTML to AMP converter.</Description>
   </PropertyGroup>
 
 </Project>
