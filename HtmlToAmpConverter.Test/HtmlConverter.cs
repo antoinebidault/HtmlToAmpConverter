@@ -1,12 +1,15 @@
 using NUnit.Framework;
 
-namespace Tests
+namespace HtmlToAmpConverter.Test
 {
-    public class Tests
+    public class HtmlToAmpConverter
     {
         [SetUp]
         public void Setup()
         {
+          _service = new HtmlToAmp(new System.Collections.Generic.HashSet<IHtmlToAmpConverter> {
+
+          })
         }
 
         [Test]
