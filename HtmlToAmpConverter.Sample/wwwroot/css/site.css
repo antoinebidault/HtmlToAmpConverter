@@ -64,7 +64,7 @@ html {
 }
 #article-content {
   max-width: 600px;
-  margin: 0 auto;
+  margin: 0 auto 100px;
 }
 #article-content figure {
   margin: 0 0 20px;

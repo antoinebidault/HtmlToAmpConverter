@@ -5,5 +5,6 @@
 }
 <div id="article-content">
   <h1>Welcome to the mobile web</h1>
+  <small>Time for generation : @Model.Timer.ToString("00#")ms</small>
   @Html.Raw(Model.Content)
 </div>

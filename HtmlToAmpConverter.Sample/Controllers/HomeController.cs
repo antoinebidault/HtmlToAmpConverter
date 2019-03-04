@@ -23,11 +23,11 @@ namespace HtmlToAmpConverter.Sample.Controllers
       {
         var client = new WebClient();
         string html = client.DownloadString($"{HttpContext.Request.Scheme}://{HttpContext.Request.Host}/documents/{doc}.html");
-        var startTime = DateTime.Now;
+        var startTime = DateTime.Now.Millisecond;
         var output = _htmlToAmp.ConvertToAmp(html);
         model.Messages = output.Messages;
         model.Content = output.Result;
-        model.Timer = (startTime - DateTime.Now).Milliseconds;
+        model.Timer = (DateTime.Now.Millisecond - startTime);
       }
       catch
       {

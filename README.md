@@ -2,4 +2,21 @@
 
 # HtmlToAmpConverter
 
-This project is intended to provide a lightweight html to AMP converter.
+This project is intended to provide a lightweight html to AMP converter for article html produced by WYSIWING editors like TinyMCE, CKEditor... It uses [HtmlAgilityPack](https://github.com/zzzprojects/html-agility-pack) for sanitizing html.
+
+# Basic installation & Configuration
+
+Install the nuget package
+```NPM
+	install-package HtmlToAmpConverter
+```
+
+In your startup.cs ConfigureServices void, register the HtmlToAmp service :
+```C#
+	services.ConfigureHtmlToAmp();
+```
+
+# List of sanitizers availables
+  amp-iframe
+	amp-img
+	script tag removing

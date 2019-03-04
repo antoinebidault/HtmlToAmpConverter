@@ -31,7 +31,7 @@ namespace HtmlToAmpConverter.Sample
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-             services.ConfigureHtmlToAmp();
+           services.ConfigureHtmlToAmp();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
