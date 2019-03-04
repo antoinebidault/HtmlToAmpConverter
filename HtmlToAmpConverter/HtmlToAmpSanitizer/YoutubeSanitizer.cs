@@ -18,7 +18,7 @@ namespace HtmlToAmpConverter
       var iframes = html.DocumentNode.QuerySelectorAll("iframe");
       foreach (var iframe in iframes)
       {
-        string iframeSrc = iframe.Attributes["src"]?.Value;
+        string iframeSrc = iframe.Attributes["src"]?.Value.FixUrl();
         if (iframeSrc.StartsWith("https://www.youtube.com/embed/"))
         {
           iframe.Name = "amp-youtube";

@@ -34,7 +34,7 @@ namespace HtmlToAmpConverter
 
 
         if (!string.IsNullOrEmpty(imgSrc))
-          iframe.SetAttributeValue("src", imgSrc);
+          iframe.SetAttributeValue("src", imgSrc.FixUrl());
 
         iframe.DisableAutoClosingTag();
       }

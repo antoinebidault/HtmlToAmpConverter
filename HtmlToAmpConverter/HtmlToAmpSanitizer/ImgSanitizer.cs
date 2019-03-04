@@ -35,7 +35,7 @@ namespace HtmlToAmpConverter
           img.SetAttributeValue("srcset", imgSrcSet);
 
         if (!string.IsNullOrEmpty(imgSrc))
-          img.SetAttributeValue("src", imgSrc);
+          img.SetAttributeValue("src", imgSrc.FixUrl());
 
         img.DisableAutoClosingTag();
       }
