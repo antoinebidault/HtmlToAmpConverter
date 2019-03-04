@@ -22,4 +22,5 @@ In your startup.cs ConfigureServices void, register the HtmlToAmp service :
 
 amp-iframe
 amp-img
-script tag removing
+amp-youtube
+script & styles tag removing

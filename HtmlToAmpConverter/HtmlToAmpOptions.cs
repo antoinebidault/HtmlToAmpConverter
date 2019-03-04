@@ -37,6 +37,7 @@ namespace HtmlToAmpConverter
       SanitizerTypes = new HashSet<Type>();
 
       // Default sanitizer
+      AddSanitizer<YoutubeSanitizer>();
       AddSanitizer<IframeSanitizer>();
       AddSanitizer<ImgSanitizer>();
       AddSanitizer<ScriptSanitizer>();

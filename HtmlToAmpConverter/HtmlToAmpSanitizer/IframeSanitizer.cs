@@ -18,7 +18,7 @@ namespace HtmlToAmpConverter
       var iframes = html.DocumentNode.QuerySelectorAll("iframe");
       foreach (var iframe in iframes)
       {
-        iframe.Name = "amp-img";
+        iframe.Name = "amp-iframe";
 
         string width = iframe.Attributes["width"]?.Value;
         string height = iframe.Attributes["height"]?.Value;
