@@ -11,6 +11,7 @@
     <PackageId>HtmlToAmpConverter</PackageId>
     <Product>HtmlToAmpConverter</Product>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageIconUrl>https://raw.githubusercontent.com/antoinebidault/HtmlToAmpConverter/master/logo.png</PackageIconUrl>
   </PropertyGroup>
 
   <ItemGroup>
