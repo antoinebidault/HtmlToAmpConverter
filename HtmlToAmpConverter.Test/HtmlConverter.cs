@@ -10,7 +10,7 @@ namespace HtmlToAmpConverter.Test
     [SetUp]
     public void Setup()
     {
-      _service = new Img();
+    //  _service = new Img();
     }
 
     [Test]

@@ -1,5 +1,6 @@
 ﻿using HtmlAgilityPack;
 using HtmlAgilityPack.CssSelectors.NetCore;
+using Microsoft.Extensions.Options;
 using System;
 
 namespace HtmlToAmpConverter
@@ -8,7 +9,7 @@ namespace HtmlToAmpConverter
   {
     private HtmlToAmpOptions _options;
 
-    public ImgSanitizer(IOptions<HtmlToAmpOptions> options)
+    public IframeSanitizer(IOptions<HtmlToAmpOptions> options)
     {
       _options = options.Value;
     }
