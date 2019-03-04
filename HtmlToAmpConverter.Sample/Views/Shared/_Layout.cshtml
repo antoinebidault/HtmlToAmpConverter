@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8">
   <title>Hello, AMPs</title>
+  <meta name="amp-experiments-opt-in" content="amp-next-page">
   <script async src="https://cdn.ampproject.org/v0.js"></script>
   <link rel="canonical" href="http://example.ampproject.org/article-metadata.html">
   <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
@@ -85,22 +86,38 @@
       }
     </style>
   </noscript>
-  <script async custom- element="amp-carousel" src="https://cdn.ampproject.org/v0/amp-carousel-0.1.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Raleway:500,700" rel="stylesheet">
+  <inline-style href="/css/site.css" amp-custom></inline-style>
+  <script async custom-element="amp-carousel" src="https://cdn.ampproject.org/v0/amp-carousel-0.1.js"></script>
   <script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
   <script async custom-element="amp-lightbox" src="https://cdn.ampproject.org/v0/amp-lightbox-0.1.js"></script>
   <script async custom-element="amp-youtube" src="https://cdn.ampproject.org/v0/amp-youtube-0.1.js"></script>
   <script async custom-element="amp-sidebar" src="https://cdn.ampproject.org/v0/amp-sidebar-0.1.js"></script>
   <script async custom-element="amp-iframe" src="https://cdn.ampproject.org/v0/amp-iframe-0.1.js"></script>
-  <link href="https://fonts.googleapis.com/css?family=Raleway:500,700" rel="stylesheet">
-  <inline-style href="/css/site.css" amp-custom></inline-style>
+  <script async custom-element="amp-next-page" src="https://cdn.ampproject.org/v0/amp-next-page-0.1.js"></script>
 </head>
 <body>
   <header class="navbar"><a class="logo-wrapper" href="/" title="MyWebsite">CustomBrand</a></header>
-  
   @RenderBody()
-
+<amp-next-page>
+<script type="application/json">
+  {
+    "pages": [
+    {
+      "image":"",
+      "title": "This article shows first",
+      "ampUrl": "@ViewContext.HttpContext.Request.Scheme://@ViewContext.HttpContext.Request.Host@Url.Action("Index", "Home", new { doc = "doc2" })"
+      }
+    ],
+    "hideSelectors": [
+      ".navbar",
+      ".footer"
+    ]
+  }
+</script>
+</amp-next-page>
   <footer class="footer">
-    <div >
+    <div>
       <p class="">All rights reserved&nbsp;-&nbsp;<span>CustomBrand @DateTime.Now.Year</span></p>
     </div>
   </footer>

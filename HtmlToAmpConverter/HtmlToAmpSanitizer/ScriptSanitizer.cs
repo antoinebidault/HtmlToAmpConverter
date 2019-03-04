@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace HtmlToAmpConverter
 {
-  internal class ScriptSanitizer : IHtmlToAmpSanitizer
+  public class ScriptSanitizer : IHtmlToAmpSanitizer
   {
     public void ConvertToAmp(HtmlDocument html)
     {

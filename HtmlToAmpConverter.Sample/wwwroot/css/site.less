@@ -78,15 +78,32 @@ html {
 #article-content {
   max-width: 600px;
   margin: 0 auto 100px;
-  
 
-  figure{
-    margin:0 0 20px;
+
+
+  figure {
+    width: 100%;
+    margin: 0 0 20px;
   }
 
-  figcaption{
-    text-align:center;
-    color:#717171;
+  @media (max-width:600px) {
+    > *:not(figure) {
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+  }
+
+  figcaption {
+    text-align: center;
+    color: #717171;
+  }
+
+  ul {
+    padding-left: 40px;
+
+    li {
+      margin-bottom: 3px;
+    }
   }
 
   h1, h2, h3, h4 {
@@ -101,6 +118,6 @@ html {
   a {
     text-decoration: none;
     color: #232323;
-    border-bottom: 2px solid  @brand-primary;
+    border-bottom: 2px solid @brand-primary;
   }
 }

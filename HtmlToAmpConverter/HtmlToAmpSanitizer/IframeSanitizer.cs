@@ -4,15 +4,35 @@ using System;
 
 namespace HtmlToAmpConverter
 {
-  internal class IframeSanitizer : IHtmlToAmpSanitizer
+  public class IframeSanitizer : IHtmlToAmpSanitizer
   {
+    private HtmlToAmpOptions _options;
+
+    public ImgSanitizer(IOptions<HtmlToAmpOptions> options)
+    {
+      _options = options.Value;
+    }
     public void ConvertToAmp(HtmlDocument html)
     {
       var iframes = html.DocumentNode.QuerySelectorAll("iframe");
       foreach (var iframe in iframes)
       {
-        iframe.Name = "amp-iframe";
-        iframe.SetAttributeValue("layout","responsive");
+        iframe.Name = "amp-img";
+
+        string width = iframe.Attributes["width"]?.Value;
+        string height = iframe.Attributes["height"]?.Value;
+        string imgSrc = iframe.Attributes["src"]?.Value;
+
+        iframe.Attributes.RemoveAll();
+
+        iframe.SetAttributeValue("width", width ?? _options.DefaultIframeWidth.ToString());
+        iframe.SetAttributeValue("height", height ?? _options.DefaultIframeHeight.ToString());
+        iframe.SetAttributeValue("layout", "responsive");
+
+
+        if (!string.IsNullOrEmpty(imgSrc))
+          iframe.SetAttributeValue("src", imgSrc);
+
         iframe.DisableAutoClosingTag();
       }
     }

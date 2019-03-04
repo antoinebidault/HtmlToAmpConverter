@@ -67,11 +67,24 @@ html {
   margin: 0 auto 100px;
 }
 #article-content figure {
+  width: 100%;
   margin: 0 0 20px;
+}
+@media (max-width: 600px) {
+  #article-content > *:not(figure) {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
 }
 #article-content figcaption {
   text-align: center;
   color: #717171;
+}
+#article-content ul {
+  padding-left: 40px;
+}
+#article-content ul li {
+  margin-bottom: 3px;
 }
 #article-content h1,
 #article-content h2,

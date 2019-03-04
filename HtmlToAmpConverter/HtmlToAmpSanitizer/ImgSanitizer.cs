@@ -5,7 +5,7 @@ using System;
 
 namespace HtmlToAmpConverter
 {
-  internal class ImgSanitizer : IHtmlToAmpSanitizer
+  public class ImgSanitizer : IHtmlToAmpSanitizer
   {
     private HtmlToAmpOptions _options;
 
@@ -24,7 +24,6 @@ namespace HtmlToAmpConverter
         string height = img.Attributes["height"]?.Value;
         string imgSrc = img.Attributes["src"]?.Value;
         string imgSrcSet = img.Attributes["srcset"]?.Value;
-
 
         img.Attributes.RemoveAll();
 
