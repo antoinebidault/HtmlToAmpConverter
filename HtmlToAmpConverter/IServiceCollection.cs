@@ -7,13 +7,13 @@ namespace Microsoft.AspNetCore.Builder
 {
   public static class IServiceCollectionExtensions
   {
-    public static IServiceCollection ConfigureHtmlToAmp(this IServiceCollection services)
+    public static IServiceCollection AddHtmlToAmpConverter(this IServiceCollection services)
     {
-      services.ConfigureHtmlToAmp(options => { });
+      services.AddHtmlToAmpConverter(options => { });
       return services;
     }
 
-    public static IServiceCollection ConfigureHtmlToAmp(this IServiceCollection services, Action<HtmlToAmpOptions> configureOptions)
+    public static IServiceCollection AddHtmlToAmpConverter(this IServiceCollection services, Action<HtmlToAmpOptions> configureOptions)
     {
       // Default HtmlToAmp service loading
       services.AddTransient<HtmlToAmp>();

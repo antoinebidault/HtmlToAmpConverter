@@ -7,16 +7,19 @@ This project is intended to provide a lightweight html to AMP converter for arti
 # Basic installation & Configuration
 
 Install the nuget package
+
 ```NPM
 	install-package HtmlToAmpConverter
 ```
 
 In your startup.cs ConfigureServices void, register the HtmlToAmp service :
+
 ```C#
-	services.ConfigureHtmlToAmp();
+	services.AddHtmlToAmpConverter();
 ```
 
 # List of sanitizers availables
-  amp-iframe
-	amp-img
-	script tag removing
+
+amp-iframe
+amp-img
+script tag removing
