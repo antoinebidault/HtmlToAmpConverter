@@ -1,11 +1,15 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <PackageTags>asp.net, AMP, performance, html</PackageTags>
     <Product>Html To Amp formatter</Product>
-    <Authors>Bidass</Authors>
+    <Authors>AntoineBidault</Authors>
     <Company>NGPA</Company>
     <Description>A lightweight HTML to AMP converter.</Description>
+    <Version>1.0.0</Version>
+    <PackageId>HtmlToAmpConverter</PackageId>
+    <Product>HtmlToAmpConverter</Product>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 
