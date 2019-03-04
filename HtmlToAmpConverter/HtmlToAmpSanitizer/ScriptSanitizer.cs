@@ -1,20 +1,27 @@
 ﻿using HtmlAgilityPack;
 using HtmlAgilityPack.CssSelectors.NetCore;
-using System;
+using System.Linq;
 
 namespace HtmlToAmpConverter
 {
-  public class ScriptSanitizer : IHtmlToAmpSanitizer
+  internal class ScriptSanitizer : IHtmlToAmpSanitizer
   {
     public void ConvertToAmp(HtmlDocument html)
     {
-      var imgs = html.DocumentNode.QuerySelectorAll("img");
-      foreach (var img in imgs)
+      var scripts = html.DocumentNode.QuerySelectorAll("script");
+      int line = 0;
+      foreach (var script in scripts)
       {
-        img.Name = "amp-img";
-        img.Attributes.Add("layout", "responsive");
-        img.DisableAutoClosingTag();
+        line = script.Line;
+        script.Remove();
       }
+
+      if (scripts.Any())
+      {
+        throw new HtmlToAmpConvertException(MessageLevel.Warning, "<script> element striped. This element is not allowed in AMP", line);
+      };
     }
+
+
   }
 }

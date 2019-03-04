@@ -21,7 +21,7 @@ namespace HtmlToAmpConverter
       // Préparation du document
       _doc = new HtmlDocument();
       _doc.LoadHtml(html);
-      
+
       foreach (var converter in _converters)
       {
         try
@@ -30,13 +30,19 @@ namespace HtmlToAmpConverter
         }
         catch (HtmlToAmpConvertException exception)
         {
-          result.Messages.Add(exception);
+          // Fill the error & warning viewbag
+          result.Messages.Add(new HtmlToAmpMessage
+          {
+            Level = exception.Level,
+            LineNumber = exception.LineNumber,
+            Message = exception.Message
+          });
         }
       }
 
-      result.Messages = _doc.DocumentNode.OuterHtml;
+      result.Result = _doc.DocumentNode.OuterHtml;
 
-      return ;
+      return result;
     }
 
 

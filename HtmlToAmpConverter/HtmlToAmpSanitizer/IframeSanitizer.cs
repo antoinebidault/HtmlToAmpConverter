@@ -4,7 +4,7 @@ using System;
 
 namespace HtmlToAmpConverter
 {
-  public class ImgSanitizer : IHtmlToAmpSanitizer
+  internal class IframeSanitizer : IHtmlToAmpSanitizer
   {
     public void ConvertToAmp(HtmlDocument html)
     {
@@ -12,9 +12,9 @@ namespace HtmlToAmpConverter
       foreach (var iframe in iframes)
       {
         iframe.Name = "amp-iframe";
+        iframe.SetAttributeValue("layout","responsive");
         iframe.DisableAutoClosingTag();
       }
     }
-    
   }
 }

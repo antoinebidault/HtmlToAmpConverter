@@ -5,9 +5,9 @@ using System.Collections.Generic;
 namespace HtmlToAmpConverter
 {
   [Serializable]
-  public class HtmlToAmpConvertException: Exception
+  internal class HtmlToAmpConvertException: Exception
   {
-    public HtmlToAmpConvertException(MessageLevel level,string message, int lineNumberError) : base(message)
+    internal HtmlToAmpConvertException(MessageLevel level,string message, int lineNumberError) : base(message)
     {
       this.LineNumber = LineNumber;
       this.Level = level;
