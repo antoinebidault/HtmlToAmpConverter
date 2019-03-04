@@ -29,6 +29,8 @@ namespace HtmlToAmpConverter
         iframe.SetAttributeValue("width", width ?? _options.DefaultIframeWidth.ToString());
         iframe.SetAttributeValue("height", height ?? _options.DefaultIframeHeight.ToString());
         iframe.SetAttributeValue("layout", "responsive");
+        iframe.SetAttributeValue("sandbox", "allow-scripts allow-same-origin");
+        iframe.SetAttributeValue("frameborder", "0");
 
 
         if (!string.IsNullOrEmpty(imgSrc))
