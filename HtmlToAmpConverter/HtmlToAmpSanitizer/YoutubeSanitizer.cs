@@ -26,6 +26,10 @@ namespace HtmlToAmpConverter
           string width = iframe.Attributes["width"]?.Value;
           string height = iframe.Attributes["height"]?.Value;
 
+          // Check querystring & remove it if not necessary
+          if (iframeSrc.IndexOf("?") > -1)
+            iframeSrc = iframeSrc.Split('?')[0];
+
           string idVideo = iframeSrc.Replace("https://www.youtube.com/embed/", "");
 
           iframe.Attributes.RemoveAll();
