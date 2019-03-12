@@ -4,6 +4,10 @@
 
 This project is intended to provide a lightweight html to AMP converter for article html produced by WYSIWING editors like TinyMCE, CKEditor... It uses [HtmlAgilityPack](https://github.com/zzzprojects/html-agility-pack) for sanitizing html.
 
+# Requirements
+
+ASP.NET Core 2.1 or higher
+
 # Basic installation & Configuration
 
 Install the nuget package
