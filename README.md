@@ -18,9 +18,50 @@ In your startup.cs ConfigureServices void, register the HtmlToAmp service :
 	services.AddHtmlToAmpConverter();
 ```
 
+And then in your controller MVC :
+```C#
+    private HtmlToAmp _htmlToAmp;
+
+    public HomeController(HtmlToAmp htmlToAmp)
+    {
+      _htmlToAmp = htmlToAmp;
+    }
+
+		public IActionResult Index(){
+			string htmlAMP = _htmlToAmp.ConvertToAmp(html);
+			return Ok(htmlAMP);
+		}
+```
+
+
+
 # List of sanitizers availables
 
-amp-iframe
-amp-img
-amp-youtube
-script & styles tag removing
+.amp-iframe
+.amp-img
+.amp-youtube
+.script & styles tag removing
+
+
+# Customization
+
+Create a custom Sanitizer
+It is recommended to use HtmlAgilityPack for manipulating the html document
+```C#
+  // Example
+	public class MyCustomSanitizer : IHtmlToAmpSanitizer
+  {
+    public void ConvertToAmp(HtmlDocument html)
+    {
+     // Manipulate the dom with HtmlAgilityPack here
+		 // See the docs : https://html-agility-pack.net/documentation
+    }
+  }
+```
+
+You register the sanitizer as following :
+```C#
+  services.AddHtmlToAmpConverter(options=> {
+    options.AddSanitizer<MyCustomSanitizer>();
+  });
+```

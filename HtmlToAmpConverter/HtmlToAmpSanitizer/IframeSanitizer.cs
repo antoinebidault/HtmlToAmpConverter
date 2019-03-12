@@ -22,7 +22,7 @@ namespace HtmlToAmpConverter
 
         string width = iframe.Attributes["width"]?.Value;
         string height = iframe.Attributes["height"]?.Value;
-        string imgSrc = iframe.Attributes["src"]?.Value;
+        string iframeSrc = iframe.Attributes["src"]?.Value;
 
         iframe.Attributes.RemoveAll();
 
@@ -32,9 +32,12 @@ namespace HtmlToAmpConverter
         iframe.SetAttributeValue("sandbox", "allow-scripts allow-same-origin");
         iframe.SetAttributeValue("frameborder", "0");
 
+        // Throw error if no imgSrc
+        if (iframeSrc == null)
+          throw new HtmlToAmpConvertException(MessageLevel.Error, "The iframe contains no src", iframe.Line);
 
-        if (!string.IsNullOrEmpty(imgSrc))
-          iframe.SetAttributeValue("src", imgSrc.FixUrl());
+        if (!string.IsNullOrEmpty(iframeSrc))
+          iframe.SetAttributeValue("src", iframeSrc.FixUrl());
 
         iframe.DisableAutoClosingTag();
       }

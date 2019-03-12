@@ -2,6 +2,7 @@
 using HtmlAgilityPack.CssSelectors.NetCore;
 using Microsoft.Extensions.Options;
 using System;
+using System.Collections.Generic;
 
 namespace HtmlToAmpConverter
 {
@@ -25,6 +26,10 @@ namespace HtmlToAmpConverter
         string imgSrc = img.Attributes["src"]?.Value;
         string imgSrcSet = img.Attributes["srcset"]?.Value;
 
+        // Throw error if no imgSrc
+        if (imgSrc == null && imgSrcSet == null)
+          throw new HtmlToAmpConvertException(MessageLevel.Error, "The image contains no src", img.Line);
+
         img.Attributes.RemoveAll();
 
         img.SetAttributeValue("width", width ?? _options.DefaultImgWidth.ToString());
@@ -39,6 +44,8 @@ namespace HtmlToAmpConverter
 
         img.DisableAutoClosingTag();
       }
+
+
     }
   }
 
