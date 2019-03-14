@@ -11,6 +11,7 @@ namespace HtmlToAmpConverter
       var forms = html.DocumentNode.QuerySelectorAll("form");
       foreach (var form in forms)
       {
+        0
         form.Name = "amp-form";
         if (!form.Attributes.Contains("action"))
         {
@@ -20,7 +21,6 @@ namespace HtmlToAmpConverter
         {
           form.SetAttributeValue("action-xhr", form.Attributes["action"].Value);
         }
-
       }
     }
   }
