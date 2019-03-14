@@ -11,7 +11,6 @@ namespace HtmlToAmpConverter
       var forms = html.DocumentNode.QuerySelectorAll("form");
       foreach (var form in forms)
       {
-        0
         form.Name = "amp-form";
         if (!form.Attributes.Contains("action"))
         {
