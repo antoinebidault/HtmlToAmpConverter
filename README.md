@@ -23,6 +23,7 @@ In your startup.cs ConfigureServices void, register the HtmlToAmp service :
 ```
 
 And then in your controller MVC :
+
 ```C#
     private HtmlToAmp _htmlToAmp;
 
@@ -31,13 +32,11 @@ And then in your controller MVC :
       _htmlToAmp = htmlToAmp;
     }
 
-		public IActionResult Index(){
+	  public IActionResult Index() {
 			string htmlAMP = _htmlToAmp.ConvertToAmp(html);
 			return Ok(htmlAMP);
 		}
 ```
-
-
 
 # List of sanitizers availables
 
@@ -46,14 +45,14 @@ And then in your controller MVC :
 .amp-youtube
 .script & styles tag removing
 
-
 # Customization
 
 Create a custom Sanitizer
 It is recommended to use HtmlAgilityPack for manipulating the html document
+
 ```C#
   // Example
-	public class MyCustomSanitizer : IHtmlToAmpSanitizer
+  public class MyCustomSanitizer : IHtmlToAmpSanitizer
   {
     public void ConvertToAmp(HtmlDocument html)
     {
@@ -64,6 +63,7 @@ It is recommended to use HtmlAgilityPack for manipulating the html document
 ```
 
 You register the sanitizer as following :
+
 ```C#
   services.AddHtmlToAmpConverter(options=> {
     options.AddSanitizer<MyCustomSanitizer>();
