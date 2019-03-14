@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace HtmlToAmpConverter
 {
-  public class HtmlToAmpOptions 
+  public class HtmlToAmpOptions
   {
     /// <summary>
     /// Default img height in px 
@@ -29,6 +29,8 @@ namespace HtmlToAmpConverter
     /// if not procided in height attribute on html <img> tag provided
     /// </summary>
     public int DefaultIframeHeight { get; set; } = 690;
+
+    public bool RemoveStyleAttribute { get; internal set; } = true;
 
     internal HashSet<Type> SanitizerTypes { get; set; }
 

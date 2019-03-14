@@ -8,18 +8,32 @@ namespace HtmlToAmpConverter
 {
   public class StyleSanitizer : IHtmlToAmpSanitizer
   {
-    public StyleSanitizer()
+    private IOptions<HtmlToAmpOptions> _options;
+
+    public StyleSanitizer(IOptions<HtmlToAmpOptions> options)
     {
+      _options = options;
     }
     public void ConvertToAmp(HtmlDocument html)
     {
       var styles = html.DocumentNode.QuerySelectorAll("style");
       int line = 0;
-      foreach (var script in styles)
+      for (int i = 0; i < styles.Count; i++)
       {
-        line = script.Line;
-        script.Remove();
+        line = styles[i].Line;
+        styles[i].Remove();
       }
+
+
+      if (_options.Value.RemoveStyleAttribute)
+      {
+        var eltWithStyleAttributes = html.DocumentNode.QuerySelectorAll("[style]");
+        foreach (var eltWithStyleAttribute in eltWithStyleAttributes)
+        {
+          eltWithStyleAttribute.Attributes.Remove("style");
+        }
+      }
+
 
       if (styles.Any())
       {
