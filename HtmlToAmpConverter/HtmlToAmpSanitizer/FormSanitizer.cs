@@ -9,11 +9,11 @@ namespace HtmlToAmpConverter
     public void ConvertToAmp(HtmlDocument html)
     {
       var forms = html.DocumentNode.QuerySelectorAll("form");
-      int line = 0;
       foreach (var form in forms)
       {
         form.Name = "amp-form";
-        if (!form.Attributes.Contains("action")) { 
+        if (!form.Attributes.Contains("action"))
+        {
           throw new HtmlToAmpConvertException(MessageLevel.Warning, "<form> element invalid. the action is not provided", form.Line);
         }
         else
