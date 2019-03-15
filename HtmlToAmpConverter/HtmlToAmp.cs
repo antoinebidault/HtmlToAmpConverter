@@ -13,10 +13,22 @@ namespace HtmlToAmpConverter
       _converters = converters;
     }
 
-
     public HtmlToAmpConvertResult ConvertToAmp(string html)
     {
+
       var result = new HtmlToAmpConvertResult();
+
+      if (string.IsNullOrEmpty(html))
+      {
+        result.Result = html;
+        result.Messages = new List<HtmlToAmpMessage> {
+           new HtmlToAmpMessage() {
+            Level = MessageLevel.Warning,
+            Message = "No html input"
+          }
+        };
+        return result;
+      }
 
       // Préparation du document
       _doc = new HtmlDocument();
