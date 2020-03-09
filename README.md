@@ -13,29 +13,29 @@ ASP.NET Core 2.1 or higher
 Install the nuget package
 
 ```NPM
-	install-package HtmlToAmpConverter
+install-package HtmlToAmpConverter
 ```
 
 In your startup.cs ConfigureServices void, register the HtmlToAmp service :
 
 ```C#
-	services.AddHtmlToAmpConverter();
+services.AddHtmlToAmpConverter();
 ```
 
 And then in your controller MVC :
 
 ```C#
-    private HtmlToAmp _htmlToAmp;
+  private HtmlToAmp _htmlToAmp;
 
-    public HomeController(HtmlToAmp htmlToAmp)
-    {
-      _htmlToAmp = htmlToAmp;
-    }
+  public HomeController(HtmlToAmp htmlToAmp)
+  {
+    _htmlToAmp = htmlToAmp;
+  }
 
-	  public IActionResult Index() {
-			string htmlAMP = _htmlToAmp.ConvertToAmp(html);
-			return Ok(htmlAMP);
-		}
+  public IActionResult Index() {
+    string htmlAMP = _htmlToAmp.ConvertToAmp(html);
+    return Ok(htmlAMP);
+  }
 ```
 
 # List of sanitizers availables
@@ -57,7 +57,7 @@ It is recommended to use HtmlAgilityPack for manipulating the html document
     public void ConvertToAmp(HtmlDocument html)
     {
      // Manipulate the dom with HtmlAgilityPack here
-		 // See the docs : https://html-agility-pack.net/documentation
+     // See the docs : https://html-agility-pack.net/documentation
     }
   }
 ```
