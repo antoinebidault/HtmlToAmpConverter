@@ -1,5 +1,5 @@
 [![Build status](https://ci.appveyor.com/api/projects/status/yrlvk9bgoo8ib73b?svg=true)](https://ci.appveyor.com/project/antoinebidault/htmltoampconverter)
-
+![Nuget](https://img.shields.io/nuget/v/htmltoampconverter)
 # HtmlToAmpConverter
 
 This project is intended to provide a lightweight html to AMP converter for article html produced by WYSIWING editors like TinyMCE, CKEditor... It uses [HtmlAgilityPack](https://github.com/zzzprojects/html-agility-pack) for sanitizing html.
