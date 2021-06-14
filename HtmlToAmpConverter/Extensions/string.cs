@@ -15,7 +15,7 @@
         return $"https:{url}";
 
       if (url.StartsWith("http://"))
-        return $"https://{url.Substring(6, url.Length)}";
+        return $"https://{url.Substring(6, url.Length - 6)}";
 
       return url;
 
