@@ -50,6 +50,10 @@ And then in your controller MVC :
 
 you can control the layout used for objects by setting the value of DefaultObjectLayout in the options file
 
+```C#
+  services.AddHtmlToAmpConverter(options=> options.DefaultObjectLayout = AmpObjectLayout.fill
+```
+
 Available options are responsive (default option), fill and cover
 
 you can use the fill option if you have images, or iframes with unknown width and height to ensure
@@ -67,10 +71,6 @@ height: 300px;
 [layout="fill"] > img {
 object-fit: contain;
 }
-
-```C#
-  services.AddHtmlToAmpConverter(options=> options.DefaultObjectLayout = AmpObjectLayout.fill
-```
 
 # Customization
 
