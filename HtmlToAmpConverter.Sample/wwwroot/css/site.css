@@ -7,6 +7,15 @@ body {
   /* Margin bottom by footer height */
   padding-top: 70px;
 }
+[layout="fill"] > img {
+  object-fit: contain;
+}
+[layout="fill"] {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 300px;
+}
 @media (min-width: 768px) {
   html {
     font-size: 16px;

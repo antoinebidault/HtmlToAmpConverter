@@ -4,45 +4,49 @@ using Microsoft.Extensions.Options;
 
 namespace HtmlToAmpConverter
 {
-  public class YoutubeSanitizer : IHtmlToAmpSanitizer
-  {
-    private HtmlToAmpOptions _options;
-
-    public YoutubeSanitizer(IOptions<HtmlToAmpOptions> options)
+    public class YoutubeSanitizer : IHtmlToAmpSanitizer
     {
-      _options = options.Value;
-    }
+        private HtmlToAmpOptions _options;
 
-    public void ConvertToAmp(HtmlDocument html)
-    {
-      var iframes = html.DocumentNode.QuerySelectorAll("iframe");
-      foreach (var iframe in iframes)
-      {
-        string iframeSrc = iframe.Attributes["src"]?.Value.FixUrl();
-        if (iframeSrc.StartsWith("https://www.youtube.com/embed/"))
+        public YoutubeSanitizer(IOptions<HtmlToAmpOptions> options)
         {
-          iframe.Name = "amp-youtube";
-
-          string width = iframe.Attributes["width"]?.Value;
-          string height = iframe.Attributes["height"]?.Value;
-
-          // Check querystring & remove it if not necessary
-          if (iframeSrc.IndexOf("?") > -1)
-            iframeSrc = iframeSrc.Split('?')[0];
-
-          string idVideo = iframeSrc.Replace("https://www.youtube.com/embed/", "");
-
-          iframe.Attributes.RemoveAll();
-
-          iframe.SetAttributeValue("data-videoid", idVideo);
-          iframe.SetAttributeValue("width", width ?? _options.DefaultIframeWidth.ToString());
-          iframe.SetAttributeValue("height", height ?? _options.DefaultIframeHeight.ToString());
-          iframe.SetAttributeValue("layout", "responsive");
-
-          iframe.DisableAutoClosingTag();
-
+            _options = options.Value;
         }
-      }
+
+        public void ConvertToAmp(HtmlDocument html)
+        {
+            var iframes = html.DocumentNode.QuerySelectorAll("iframe");
+            foreach (var iframe in iframes)
+            {
+                string iframeSrc = iframe.Attributes["src"]?.Value.FixUrl();
+                if (iframeSrc.StartsWith("https://www.youtube.com/embed/"))
+                {
+                    iframe.Name = "amp-youtube";
+
+                    string width = iframe.Attributes["width"]?.Value;
+                    string height = iframe.Attributes["height"]?.Value;
+
+                    // Check querystring & remove it if not necessary
+                    if (iframeSrc.IndexOf("?") > -1)
+                        iframeSrc = iframeSrc.Split('?')[0];
+
+                    string idVideo = iframeSrc.Replace("https://www.youtube.com/embed/", "");
+
+                    iframe.Attributes.RemoveAll();
+
+                    iframe.SetAttributeValue("data-videoid", idVideo);
+                    iframe.SetAttributeValue("layout", _options.DefaultObjectLayout.ToString());
+
+                    if (_options.DefaultObjectLayout == AmpObjectLayout.responsive)
+                    {
+                        iframe.SetAttributeValue("width", width ?? _options.DefaultIframeWidth.ToString());
+                        iframe.SetAttributeValue("height", height ?? _options.DefaultIframeHeight.ToString());
+                    }
+
+                    iframe.DisableAutoClosingTag();
+
+                }
+            }
+        }
     }
-  }
 }

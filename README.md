@@ -45,6 +45,10 @@ And then in your controller MVC :
 .amp-youtube
 .script & styles tag removing
 
+# Options
+
+
+
 # Customization
 
 Create a custom Sanitizer
